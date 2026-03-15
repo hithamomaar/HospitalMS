@@ -14,5 +14,6 @@ namespace Hospital.models
         public DoctorSchedule Schedule { get; set; }
         public AppointmentStatus Status { get; set; }
         public string CancellationReason { get; set; }
+        public ICollection<Prescription> Prescriptions { get; set; } = new List<Prescription>();
     }
 }

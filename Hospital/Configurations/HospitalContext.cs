@@ -14,6 +14,8 @@ namespace Hospital.Configurations
         public DbSet<Specialty> Specialties { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<DoctorSchedule> DoctorSchedules { get; set; }
+        public DbSet<Medication> Medications { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,6 +29,8 @@ namespace Hospital.Configurations
             builder.ApplyConfiguration(new DoctorConfiguration());
             builder.ApplyConfiguration(new AppointmentConfiguration());
             builder.ApplyConfiguration(new DoctorScheduleConfiguration());
+            builder.ApplyConfiguration(new MedicationConfiguration());
+            builder.ApplyConfiguration(new PrescriptionConfiguration());
 
             base.OnModelCreating(builder);
         }
