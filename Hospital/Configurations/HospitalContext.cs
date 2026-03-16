@@ -34,5 +34,21 @@ namespace Hospital.Configurations
 
             base.OnModelCreating(builder);
         }
+        public override int SaveChanges()
+        {
+            foreach (var entry in ChangeTracker.Entries<BaseModel>())
+            {
+                if (entry.State == EntityState.Unchanged) continue;
+                if (entry.State == EntityState.Detached) continue;
+
+                entry.Entity.LastModified = DateTime.UtcNow
+                else if (entry.State == EntityState.Deleted)
+                {
+                    entry.State = EntityState.Modified;
+                    entry.Entity.IsDeleted = true;
+                }
+            }
+            return base.SaveChanges();
+        }
     }
 }
