@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Hospital.Web.ViewModels.SpecialtyViewModel>
+
+@{
+    ViewData["Title"] = "Medical Specialties";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">Our Medical Specialties</h2>
+        <p class="text-muted">Choose a specialty to find the right doctor for you.</p>
+    </div>
+
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <div class="col-12 text-center">
+                <div class="alert alert-info">No specialties available at the moment.</div>
+            </div>
+        }
+        else
+        {
+            @foreach (var specialty in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <span class="fs-1">🩺</span>
+                            </div>
+                            <h4 class="card-title text-dark">@specialty.Name</h4>
+                            <p class="card-text text-muted">@specialty.Description</p>
+                        </div>
+                        <div class="card-footer bg-white border-0 text-center pb-3">
+                            <a asp-controller="Doctor" asp-action="Index" asp-route-specialtyId="@specialty.Id" class="btn btn-outline-primary w-100">View Doctors</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

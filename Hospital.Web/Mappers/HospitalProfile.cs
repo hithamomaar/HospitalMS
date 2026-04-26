@@ -9,6 +9,7 @@ namespace Hospital.Web.Mappers
         public HospitalProfile()
         {
             CreateMap<Specialty, SpecialtyViewModel>().ReverseMap();
+            CreateMap<Doctor, DoctorViewModel>().ReverseMap();  
         }
     }
 }

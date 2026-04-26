@@ -3,11 +3,13 @@ using Hospital.Services;
 using Hospital.Web.Mappers;
 using Microsoft.EntityFrameworkCore;
 
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Hospital.Web
 {
     public class Program
     {
-        public void Main(string[] args)
+        public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +20,12 @@ namespace Hospital.Web
 
             builder.Services.AddDbContext<HospitalContext>(options =>
                 options.UseSqlServer(connectionString));
-            builder.Services.AddAutoMapper(typeof(HospitalProfile));
+
+
+            builder.Services.AddAutoMapper(cfg => { }, typeof(Program).Assembly);
             builder.Services.AddScoped<AppointmentService>();
+            builder.Services.AddScoped<SpecialtyService>();
+            builder.Services.AddScoped<DoctorService>();
 
             var app = builder.Build();
 

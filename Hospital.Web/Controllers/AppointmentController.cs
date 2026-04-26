@@ -10,15 +10,5 @@ namespace Hospital.Web.Controllers
         {
             appointmentService = _appointmentService;
         }
-        [HttpGet]
-        public IActionResult GetAvailableSchedules(int doctorId)
-        {
-            // بننادي على اللوجيك اللي في بروجكت الـ EF
-            var schedules = appointmentService.GetDoctorAvailableSchedules(doctorId);
-
-            // بنرجع الداتا كـ JSON عشان نختبر إن الربط شغال صح
-            return Json(schedules);
-            //return View();
-        }
     }
 }
