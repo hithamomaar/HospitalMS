@@ -1,12 +1,13 @@
 using Hospital.Configurations;
 using Hospital.Services;
+using Hospital.Web.Mappers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hospital.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ namespace Hospital.Web
 
             builder.Services.AddDbContext<HospitalContext>(options =>
                 options.UseSqlServer(connectionString));
+            builder.Services.AddAutoMapper(typeof(HospitalProfile));
             builder.Services.AddScoped<AppointmentService>();
 
             var app = builder.Build();

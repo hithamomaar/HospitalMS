@@ -13,6 +13,32 @@ namespace Hospital.Configurations
         {
             builder.Property<DateTime>("CreatedAt").HasDefaultValueSql("GETDATE()");
             builder.Property(m => m.Version).IsRowVersion();
+
+            builder.HasData(
+                new Medication
+                {
+                    Id = 1,
+                    Name = "Panadol",
+                    GenericName = "Paracetamol",
+                    IsDeleted = false,
+                    LastModified = new DateTime(2026, 01, 01)
+                },
+                new Medication
+                {
+                    Id = 2,
+                    Name = "Augmentin",
+                    GenericName = "Amoxicillin/Clavulanate",
+                    IsDeleted = false,
+                    LastModified = new DateTime(2026, 01, 01)
+                },
+                new Medication
+                {
+                    Id = 3,
+                    Name = "Aspirin",
+                    GenericName = "Acetylsalicylic Acid",
+                    IsDeleted = false,
+                    LastModified = new DateTime(2026, 01, 01)
+                });
         }
     }
 }

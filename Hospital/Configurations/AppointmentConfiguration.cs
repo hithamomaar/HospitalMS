@@ -23,6 +23,18 @@ namespace Hospital.Configurations
 
             builder.Property<DateTime>("CreatedAt").HasDefaultValueSql("GETDATE()");
             builder.Property(a => a.Version).IsRowVersion();
+
+            builder.HasData(
+                new Appointment
+                {
+                    Id = 1,
+                    PatientId = 3,
+                    ScheduleId = 1,
+                    Status = AppointmentStatus.Confirmed,
+                    CancellationReason = string.Empty,
+                    IsDeleted = false,
+                    LastModified = new DateTime(2026, 01, 01)
+                });
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Hospital.models
 {
     public enum Gender
     {
-        Male,
+        Male, // male is 
         Female
     }
 }
